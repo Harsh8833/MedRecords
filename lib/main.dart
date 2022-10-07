@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medrecords/authentication/welcome_page.dart';
 import 'package:medrecords/config/theme.dart';
 import 'package:medrecords/view/allergies.dart';
 import 'package:medrecords/view/homepage.dart';
@@ -19,10 +20,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: Homepage.route,
+      initialRoute: WelcomePage.route,
       routes: {
         Homepage.route: (context) => const Homepage(),
+        WelcomePage.route: ((context) => const WelcomePage()),
         MedicalHistoryPage.route: (context) => const MedicalHistoryPage(),
         MedicalVisitPage.route: ((context) => const MedicalVisitPage()),
         AllergiesPage.route: (context) => const AllergiesPage(),

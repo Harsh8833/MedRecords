@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medrecords/authentication/login_page.dart';
+import 'package:medrecords/view/components/widgets.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -40,8 +42,8 @@ class WelcomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 68),
             child: SizedBox(
-                width: 250,
-                child: loginsignupButtons(context, "Log In", route)),
+                width: 220,
+                child: loginsignupButtons(context, "Log In", LoginPage.route, Colors.amber)),
           ),
           const SizedBox(
             height: 1,
@@ -49,42 +51,23 @@ class WelcomePage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Don't have an account?",
-                style: TextStyle(fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
               ),
               TextButton(
                   onPressed: (() {}),
-                  child: Text(
-                    "Sign Up",
+                  child: const Text(
+                    "Sign Up Here",
                     style: TextStyle(
                         fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold, color: Colors.amber),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.amber),
                   ))
             ],
           )
         ],
-      ),
-    );
-  }
-
-  MaterialButton loginsignupButtons(context, txt, route) {
-    return MaterialButton(
-      onPressed: () {
-        Navigator.pushNamed(context, route);
-      },
-      color: Colors.amber,
-      height: 50,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-      child: Text(
-        txt,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            fontSize: 16,
-            color: Colors.white,
-            fontWeight: FontWeight.w900,
-            fontFamily: GoogleFonts.poppins().fontFamily),
       ),
     );
   }

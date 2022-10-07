@@ -7,6 +7,8 @@ class AppTheme {
   static final ThemeData lightTheme = ThemeData(
       primaryColor: AppColor.seaBlue,
       useMaterial3: true,
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: AppColor.seaBlue),
       scaffoldBackgroundColor: AppColor.darkGray,
       appBarTheme: const AppBarTheme(backgroundColor: AppColor.offBlack));
 }

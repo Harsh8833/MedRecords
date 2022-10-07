@@ -44,8 +44,10 @@ class WelcomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 68),
             child: SizedBox(
                 width: 220,
-                child: loginsignupButtons(
-                    context, "Log In", LoginPage.route, Colors.amber)),
+                child: AppButton(
+                    txt:  "Log In",onTap:  (){
+                      Navigator.pushNamed(context, LoginPage.route);
+                    }, )),
           ),
           const SizedBox(
             height: 1,
@@ -60,7 +62,8 @@ class WelcomePage extends StatelessWidget {
               ),
               TextButton(
                   onPressed: (() {
-                    SignupPage.route;
+                    Navigator.pushNamed(context, SignupPage.route)
+                    ;
                   }),
                   child: const Text(
                     "Sign Up Here",

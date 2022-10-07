@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:medrecords/authentication/authservices.dart';
 import 'package:medrecords/authentication/signup_page.dart';
 import 'package:medrecords/view/components/widgets.dart';
 import 'package:medrecords/view/homepage.dart';
+
+import '../database/database_services.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,6 +18,32 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  AuthServices authService = AuthServices();
+  String email = "";
+  String password = "";
+
+  Future logIn() async {
+    await authService
+        .signInWithEmailandPassword(email, password)
+        .then((value) async {
+      if (value == true) {
+        QuerySnapshot snapshot =
+            await DatabaseServices(uid: FirebaseAuth.instance.currentUser!.uid)
+                .gettingUserData(email);
+        await HelperFunction.saveUserLoggedInStatus(true);
+        await HelperFunction.saveUserEmailSF(email);
+        await HelperFunction.saveUserNameSF(snapshot.docs[0]['fullName']);
+
+        // ignore: use_build_context_synchronously
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => const Homepage()),
+            (route) => false);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,20 +88,25 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(
                 width: 300,
-                child: loginsignupfields("Mail", CupertinoIcons.mail)),
+                child: loginsignupfields(
+                    "Mail", CupertinoIcons.mail, _emailController, email)),
             const SizedBox(
               height: 25,
             ),
             SizedBox(
                 width: 300,
-                child: loginsignupfields("Password", CupertinoIcons.lock)),
+                child: loginsignupfields("Password", CupertinoIcons.lock,
+                    _passwordController, password)),
             const SizedBox(
               height: 45,
             ),
             SizedBox(
                 width: 220,
-                child: loginsignupButtons(
-                    context, "L O G I N", Homepage.route, Colors.blueGrey)),
+                child: AppButton(
+                    txt: "L O G I N",
+                    onTap: () {
+                      logIn();
+                    })),
             const SizedBox(
               height: 5,
             ),
@@ -85,7 +121,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextButton(
                     onPressed: (() {
-                      SignupPage.route;
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, SignupPage.route, (route) => false);
                     }),
                     child: const Text(
                       "Sign Up",

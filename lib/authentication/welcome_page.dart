@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medrecords/authentication/login_page.dart';
+import 'package:medrecords/authentication/signup_page.dart';
 import 'package:medrecords/view/components/widgets.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -43,7 +44,8 @@ class WelcomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 68),
             child: SizedBox(
                 width: 220,
-                child: loginsignupButtons(context, "Log In", LoginPage.route, Colors.amber)),
+                child: loginsignupButtons(
+                    context, "Log In", LoginPage.route, Colors.amber)),
           ),
           const SizedBox(
             height: 1,
@@ -57,7 +59,9 @@ class WelcomePage extends StatelessWidget {
                     fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
               ),
               TextButton(
-                  onPressed: (() {}),
+                  onPressed: (() {
+                    SignupPage.route;
+                  }),
                   child: const Text(
                     "Sign Up Here",
                     style: TextStyle(

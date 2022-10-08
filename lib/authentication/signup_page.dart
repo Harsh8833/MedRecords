@@ -38,9 +38,9 @@ class _SignupPageState extends State<SignupPage> {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => const Homepage()),
             (route) => false);
-      }else {
-          showSnackBar(context, Colors.red, value);
-        }
+      } else {
+        showSnackBar(context, Colors.red, value);
+      }
     });
   }
 
@@ -88,22 +88,43 @@ class _SignupPageState extends State<SignupPage> {
             ),
             SizedBox(
                 width: 300,
-                child: loginsignupfields("Name", CupertinoIcons.profile_circled,
-                    _nameController, fullName)),
+                child: loginsignupfields(
+                    hinttxt: "Name",
+                    icon: CupertinoIcons.profile_circled,
+                    fieldcontroller: _nameController,
+                    onChanged: (value) {
+                      setState(() {
+                        fullName = value;
+                      });
+                    })),
             const SizedBox(
               height: 25,
             ),
             SizedBox(
                 width: 300,
                 child: loginsignupfields(
-                    "Mail", CupertinoIcons.mail, _emailController, email)),
+                    hinttxt: "Mail",
+                    icon: CupertinoIcons.mail,
+                    fieldcontroller: _emailController,
+                    onChanged: (value) {
+                      setState(() {
+                        email = value;
+                      });
+                    })),
             const SizedBox(
               height: 25,
             ),
             SizedBox(
                 width: 300,
-                child: loginsignupfields("Password", CupertinoIcons.lock,
-                    _passwordController, password)),
+                child: loginsignupfields(
+                    hinttxt: "Password",
+                    icon: CupertinoIcons.lock,
+                    fieldcontroller: _passwordController,
+                    onChanged: (value) {
+                      setState(() {
+                        password = value;
+                      });
+                    })),
             const SizedBox(
               height: 45,
             ),

@@ -42,12 +42,10 @@ void showSnackBar(context, color, message) {
   ));
 }
 
-TextFormField loginsignupfields(hinttxt, icon, fieldcontroller, fieldvalue) {
+TextFormField loginsignupfields({hinttxt, icon, onChanged, fieldcontroller}) {
   return TextFormField(
-    onChanged: (value) {
-      fieldvalue = value;
-    },
-    controller: fieldcontroller,
+    onChanged: onChanged,
+    controller: fieldcontroller, 
     decoration: InputDecoration(
         prefixIcon: Icon(
           icon,

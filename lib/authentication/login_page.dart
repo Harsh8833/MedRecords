@@ -89,14 +89,28 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
                 width: 300,
                 child: loginsignupfields(
-                    "Mail", CupertinoIcons.mail, _emailController, email)),
+                    hinttxt: "Mail",
+                    icon: CupertinoIcons.mail,
+                    fieldcontroller: _emailController,
+                    onChanged: (value) {
+                      setState(() {
+                        email = value;
+                      });
+                    })),
             const SizedBox(
               height: 25,
             ),
             SizedBox(
                 width: 300,
-                child: loginsignupfields("Password", CupertinoIcons.lock,
-                    _passwordController, password)),
+                child: loginsignupfields(
+                    hinttxt: "Password",
+                    icon: CupertinoIcons.lock,
+                    fieldcontroller: _passwordController,
+                    onChanged: (value) {
+                      setState(() {
+                        password = value;
+                      });
+                    })),
             const SizedBox(
               height: 45,
             ),

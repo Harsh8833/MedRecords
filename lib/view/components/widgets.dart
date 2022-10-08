@@ -6,7 +6,7 @@ void showSnackBar(context, color, message) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     content: Text(
       message,
-      style: TextStyle(fontSize: 14),
+      style: const TextStyle(fontSize: 14),
     ),
     backgroundColor: color,
     duration: const Duration(seconds: 3),
@@ -18,14 +18,17 @@ void showSnackBar(context, color, message) {
   ));
 }
 
-TextFormField inputFeild({hinttxt, icon, onChanged, fieldcontroller}) {
+
+TextFormField inputFeild({hinttxt, icon, onChanged, fieldcontroller, obscuretext}) {
   return TextFormField(
+    style: const TextStyle(color: Colors.red),
+    obscureText: obscuretext,
     onChanged: onChanged,
     controller: fieldcontroller,
     decoration: InputDecoration(
         prefixIcon: Icon(
           icon,
-          color: AppColor.darkGray,
+          color: Colors.blueGrey,
         ),
         hintText: hinttxt,
         hintStyle: const TextStyle(color: Colors.blueGrey),

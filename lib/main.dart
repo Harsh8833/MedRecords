@@ -6,7 +6,6 @@ import 'package:medrecords/authentication/welcome_page.dart';
 import 'package:medrecords/config/theme.dart';
 import 'package:medrecords/view/allergies.dart';
 import 'package:medrecords/view/homepage.dart';
-import 'package:medrecords/view/main_activity.dart';
 import 'package:medrecords/view/medical_history.dart';
 import 'package:medrecords/view/medical_visit.dart';
 import 'package:medrecords/view/vaccinations.dart';
@@ -33,7 +32,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: Homepage.route,
+      initialRoute: WelcomePage.route,
       routes: {
         Homepage.route: (context) => const Homepage(),
         WelcomePage.route: ((context) => const WelcomePage()),

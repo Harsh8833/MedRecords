@@ -97,7 +97,8 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {
                         email = value;
                       });
-                    })),
+                    },
+                    obscuretext: false)),
             const SizedBox(
               height: 25,
             ),
@@ -111,7 +112,8 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {
                         password = value;
                       });
-                    })),
+                    },
+                    obscuretext: true)),
             const SizedBox(
               height: 45,
             ),

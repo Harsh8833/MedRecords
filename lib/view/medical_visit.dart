@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:medrecords/config/const.dart';
+import 'package:medrecords/database/database_services.dart';
 import 'package:medrecords/view/components/med_scaffold.dart';
 import 'package:medrecords/view/components/widgets.dart';
 import 'package:medrecords/view/components/widgets/cards.dart';
@@ -85,7 +88,8 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
                           setState(() {
                             doctorName = value;
                           });
-                        }),
+                        },
+                        obscuretext: false),
                     inputFeild(
                         hinttxt: "Purpose of visiting",
                         icon: Icons.all_inclusive,
@@ -94,28 +98,30 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
                           setState(() {
                             purpose = value;
                           });
-                        }),
+                        },
+                        obscuretext: false),
                     inputFeild(
                         hinttxt: "Date & Time",
                         icon: Icons.date_range,
                         fieldcontroller: dateTimeController,
                         onChanged: (value) {
                           dateTime = value;
-                        }),
+                        },
+                        obscuretext: false),
                     inputFeild(
                         hinttxt: "Palce",
                         icon: Icons.location_city,
                         fieldcontroller: placeController,
                         onChanged: (value) {
                           place = value;
-                        }),
+                        },
+                        obscuretext: false),
                     AppButton(
                         txt: "Add",
                         onTap: () {
-                          print(doctorNameController.text +
-                              purposeController.text +
-                              dateTimeController.text +
-                              placeController.text);
+                          log("started");
+                          DatabaseServices().createMedicalvisits(
+                              doctorName, purpose, dateTime, place);
                         })
                   ]),
                 )),

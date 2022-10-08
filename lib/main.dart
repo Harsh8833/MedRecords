@@ -67,7 +67,7 @@ class _MyAppState extends State<MyApp> {
         LoginPage.route: (context) => const LoginPage(),
         SignupPage.route: (context) => const SignupPage(),
         MedicalHistoryPage.route: (context) => const MedicalHistoryPage(),
-        MedicalVisitPage.route: ((context) => MedicalVisitPage()),
+        MedicalVisitPage.route: ((context) => const MedicalVisitPage()),
         AllergiesPage.route: (context) => const AllergiesPage(),
         VaccinationPage.route: ((context) => const VaccinationPage())
       },

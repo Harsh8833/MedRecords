@@ -1,4 +1,4 @@
-import 'dart:developer';
+// ignore_for_file: avoid_print
 
 import 'dart:developer';
 
@@ -14,7 +14,7 @@ import 'package:medrecords/view/components/widgets/cards.dart';
 import 'components/widgets/app_button.dart';
 
 class MedicalVisitPage extends StatefulWidget {
-  MedicalVisitPage({super.key});
+  const MedicalVisitPage({super.key});
   static const route = 'medical_records';
 
   @override

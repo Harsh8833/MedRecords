@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:medrecords/config/const.dart';
 import 'package:medrecords/view/components/med_scaffold.dart';
@@ -16,7 +18,6 @@ class MedicalVisitPage extends StatefulWidget {
 
 class _MedicalVisitPageState extends State<MedicalVisitPage> {
   final TextEditingController doctorNameController = TextEditingController();
-
   final TextEditingController dateTimeController = TextEditingController();
   final TextEditingController purposeController = TextEditingController();
   final TextEditingController placeController = TextEditingController();
@@ -60,65 +61,60 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
         context: context,
         builder: (BuildContext context) {
           return Dialog(
-            child: SizedBox(
-                height: size.height * 0.45,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Column(children: [
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    const Text(
-                      "Add New Medial visit",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.darkGray,
-                      ),
-                    ),
-                    const Divider(),
-                    inputFeild(
-                        hinttxt: "Doctor Name",
-                        icon: Icons.person,
-                        fieldcontroller: doctorNameController,
-                        onChanged: (value) {
-                          setState(() {
-                            doctorName = value;
-                          });
-                        }),
-                    inputFeild(
-                        hinttxt: "Purpose of visiting",
-                        icon: Icons.all_inclusive,
-                        fieldcontroller: purposeController,
-                        onChanged: (value) {
-                          setState(() {
-                            purpose = value;
-                          });
-                        }),
-                    inputFeild(
-                        hinttxt: "Date & Time",
-                        icon: Icons.date_range,
-                        fieldcontroller: dateTimeController,
-                        onChanged: (value) {
-                          dateTime = value;
-                        }),
-                    inputFeild(
-                        hinttxt: "Palce",
-                        icon: Icons.location_city,
-                        fieldcontroller: placeController,
-                        onChanged: (value) {
-                          place = value;
-                        }),
-                    AppButton(
-                        txt: "Add",
-                        onTap: () {
-                          print(doctorNameController.text +
-                              purposeController.text +
-                              dateTimeController.text +
-                              placeController.text);
-                        })
-                  ]),
-                )),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(mainAxisSize: MainAxisSize.min, children: [
+                const SizedBox(
+                  height: 16,
+                ),
+                const Text(
+                  "Add New Medial visit",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.darkGray,
+                  ),
+                ),
+                const Divider(),
+                inputFeild(
+                    hinttxt: "Doctor Name",
+                    icon: Icons.person,
+                    fieldcontroller: doctorNameController,
+                    onChanged: (value) {
+                      setState(() {
+                        doctorName = value;
+                      });
+                    }),
+                inputFeild(
+                    hinttxt: "Purpose of visiting",
+                    icon: Icons.all_inclusive,
+                    fieldcontroller: purposeController,
+                    onChanged: (value) {
+                      setState(() {
+                        purpose = value;
+                      });
+                    }),
+                inputFeild(
+                    hinttxt: "Date & Time",
+                    icon: Icons.date_range,
+                    fieldcontroller: dateTimeController,
+                    onChanged: (value) {
+                      dateTime = value;
+                    }),
+                inputFeild(
+                    hinttxt: "Place",
+                    icon: Icons.location_city,
+                    fieldcontroller: placeController,
+                    onChanged: (value) {
+                      place = value;
+                    }),
+                AppButton(
+                    txt: "Add",
+                    onTap: () {
+                      log("Button Tapped");
+                    })
+              ]),
+            ),
           );
         });
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:medrecords/config/const.dart';
 import 'package:medrecords/view/allergies.dart';
 import 'package:medrecords/view/components/med_scaffold.dart';
 import 'package:medrecords/view/medical_history.dart';

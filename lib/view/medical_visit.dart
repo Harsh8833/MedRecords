@@ -34,6 +34,7 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
   String uid = prefs.getString('USERID') ?? "";
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
   }

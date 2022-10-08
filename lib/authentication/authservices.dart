@@ -1,6 +1,7 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:medrecords/main.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../database/database_services.dart';
 
@@ -75,13 +76,12 @@ class HelperFunction {
     return await prefs.setString(userId, uid);
   }
 
-  //getting the data from sharedpreferences
   static Future<bool?> getUserLoggedInStatus() async {
     return prefs.getBool(userLoggedInKey);
   }
 
   static Future<String?> getUserId() async {
-    return  prefs.getString(userId);
+    return prefs.getString(userId);
   }
 
   static Future<String?> getUserEmailFromSF() async {

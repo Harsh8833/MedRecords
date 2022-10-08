@@ -49,6 +49,7 @@ class _AllergiesPageState extends State<AllergiesPage> {
                         return const Text('Error');
                       } else if (snapshot.hasData) {
                         var data = snapshot.data!.docs;
+                        // ignore: avoid_print
                         print(data.length);
                         return ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),

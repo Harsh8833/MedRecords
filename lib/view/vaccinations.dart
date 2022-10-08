@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -126,12 +128,11 @@ class _VaccinationPageState extends State<VaccinationPage> {
                     }),
                 AppButton(
                     txt: "Add",
-                    onTap: () async{
+                    onTap: () async {
                       log("Button Tapped");
                       var dbServices = DatabaseServices();
                       await dbServices
-                          .createVaccinations(
-                              vacciName, vacciDate, vacciExp)
+                          .createVaccinations(vacciName, vacciDate, vacciExp)
                           .then((value) {
                         Navigator.pop(context);
                         vacciName = "";

@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class MedScaffold extends StatelessWidget {
   final title;
   final silverList;
@@ -14,7 +17,6 @@ class MedScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       floatingActionButton: (fab != null)
           ? FloatingActionButton.extended(

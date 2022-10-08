@@ -15,7 +15,8 @@ class DatabaseServices {
       "fullName": fullName,
       "email": email,
       "uid": uid,
-      "medicalvisits": []
+      "medicalvisits": [],
+      "allergies": [],
     });
   }
 
@@ -36,6 +37,25 @@ class DatabaseServices {
         "dateTime": dateTime,
         "place": place,
         "medicalvisitsId": doctorName + dateTime,
+      });
+      log("Medical Visit Created");
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  Future<bool> createAllergies(
+      String allergyName, String allergyDuration, String precautions) async {
+    final userid = await HelperFunction.getUserId();
+    log("Creating Allergies");
+    try {
+      userCollection.doc(userid).collection('allergies').add({
+        "allergyName": allergyName,
+        "allergyDuration": allergyDuration,
+        "precautions": precautions,
+        "allergiesId": allergyName + allergyDuration,
       });
       log("Medical Visit Created");
       return true;

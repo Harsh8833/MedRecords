@@ -87,3 +87,34 @@ class MedicalVistiCard extends StatelessWidget {
     ]);
   }
 }
+
+class AllergiesCard extends StatelessWidget {
+  final String allergyName;
+  final String duration;
+  final String precautions;
+  const AllergiesCard(
+      {super.key,
+      required this.allergyName,
+      required this.duration,
+      required this.precautions});
+
+  @override
+  Widget build(BuildContext context) {
+    return PrimaryCard(title: allergyName, subtitles: <Widget>[
+      Text(
+        duration,
+        style: const TextStyle(
+            color: AppColor.darkGray,
+            fontSize: 17,
+            fontWeight: FontWeight.w600),
+      ),
+      Text(
+        precautions,
+        style: const TextStyle(
+            color: AppColor.darkGray,
+            fontSize: 17,
+            fontWeight: FontWeight.w600),
+      ),
+    ]);
+  }
+}

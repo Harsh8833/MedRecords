@@ -5,7 +5,6 @@ import 'package:medrecords/config/const.dart';
 import 'package:medrecords/database/database_services.dart';
 import 'package:medrecords/view/components/med_scaffold.dart';
 import 'package:medrecords/view/components/widgets.dart';
-import 'package:medrecords/view/components/widgets/cards.dart';
 
 import 'components/widgets/app_button.dart';
 

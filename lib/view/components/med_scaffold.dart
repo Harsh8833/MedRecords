@@ -4,8 +4,13 @@ class MedScaffold extends StatelessWidget {
   final title;
   final silverList;
   final fab;
-  const MedScaffold(
-      {super.key, required this.title, required this.silverList, this.fab});
+  bool backButton;
+  MedScaffold(
+      {super.key,
+      required this.title,
+      required this.silverList,
+      this.fab,
+      this.backButton = true});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +19,17 @@ class MedScaffold extends StatelessWidget {
       floatingActionButton: (fab != null)
           ? FloatingActionButton.extended(
               onPressed: fab,
-              icon: Icon(Icons.add),
-              label: Text("Add"),
+              icon: const Icon(Icons.add),
+              label: const Text("Add"),
             )
-          : SizedBox(),
+          : const SizedBox(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
             expandedHeight: 150,
+            leading: (backButton)
+                ? const BackButton(color: Colors.white)
+                : const SizedBox(),
             flexibleSpace: FlexibleSpaceBar(
               expandedTitleScale: 2,
               title: Text(

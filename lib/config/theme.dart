@@ -10,5 +10,7 @@ class AppTheme {
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: AppColor.seaBlue),
       scaffoldBackgroundColor: AppColor.darkGray,
-      appBarTheme: const AppBarTheme(backgroundColor: AppColor.offBlack));
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppColor.offBlack,
+      ));
 }

@@ -14,6 +14,7 @@ class Homepage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return MedScaffold(
       title: "MedRecords",
+      backButton: false,
       silverList: SliverList(
         delegate: SliverChildBuilderDelegate(
           (BuildContext context, int index) {

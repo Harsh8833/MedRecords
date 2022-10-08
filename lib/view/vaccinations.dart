@@ -10,7 +10,13 @@ class VaccinationPage extends StatelessWidget {
     return MedScaffold(
       title: "Vaccinations",
       fab: () {},
-      silverList: null,
+      silverList: SliverList(
+        delegate: SliverChildBuilderDelegate((context, index) {
+          return SizedBox(
+            height: 100,
+          );
+        }, childCount: 1),
+      ),
     );
   }
 }

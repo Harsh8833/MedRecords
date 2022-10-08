@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1091529201789",
+    "project_id": "medrecords-48702",
+    "storage_bucket": "medrecords-48702.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091529201789:android:e989616ccd24144776b914",
+        "android_client_info": {
+          "package_name": "com.example.medrecords"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091529201789-6g41fd6cqe7dvgmhnptid331ack82fki.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medrecords",
+            "certificate_hash": "847e277a31dfa4ee95807ff1cc2bf8fece8b5384"
+          }
+        },
+        {
+          "client_id": "1091529201789-g02mdd5do20e419e4uo0ksokgg6fbil0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEVYwsQAUCUbjnLSWFaYm1_YM6dWgPrX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091529201789-g02mdd5do20e419e4uo0ksokgg6fbil0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:medrecords/config/const.dart';
 
 class PrimaryCard extends StatelessWidget {
-  late String title;
-  late List<Widget> subtitles;
-  PrimaryCard({super.key, required this.title, required this.subtitles});
+  final String title;
+  final List<Widget> subtitles;
+  const PrimaryCard({super.key, required this.title, required this.subtitles});
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +49,8 @@ class PrimaryCard extends StatelessWidget {
 }
 
 class MedicalVistiCard extends StatelessWidget {
-  final drName;
-  final dateTime;
+  final String drName;
+  final String dateTime;
   const MedicalVistiCard(
       {super.key, required this.drName, required this.dateTime});
 

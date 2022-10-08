@@ -6,13 +6,26 @@ import 'package:medrecords/view/components/widgets/cards.dart';
 
 import 'components/widgets/app_button.dart';
 
-class MedicalVisitPage extends StatelessWidget {
+class MedicalVisitPage extends StatefulWidget {
   MedicalVisitPage({super.key});
   static const route = 'medical_records';
+
+  @override
+  State<MedicalVisitPage> createState() => _MedicalVisitPageState();
+}
+
+class _MedicalVisitPageState extends State<MedicalVisitPage> {
   final TextEditingController doctorNameController = TextEditingController();
+
   final TextEditingController dateTimeController = TextEditingController();
   final TextEditingController purposeController = TextEditingController();
   final TextEditingController placeController = TextEditingController();
+
+  String doctorName = "";
+  String dateTime = "";
+  String purpose = "";
+  String place = "";
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -50,7 +63,7 @@ class MedicalVisitPage extends StatelessWidget {
             child: SizedBox(
                 height: size.height * 0.45,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Column(children: [
                     const SizedBox(
                       height: 16,
@@ -69,28 +82,32 @@ class MedicalVisitPage extends StatelessWidget {
                         icon: Icons.person,
                         fieldcontroller: doctorNameController,
                         onChanged: (value) {
-                          doctorNameController.text = value;
+                          setState(() {
+                            doctorName = value;
+                          });
                         }),
                     inputFeild(
                         hinttxt: "Purpose of visiting",
                         icon: Icons.all_inclusive,
                         fieldcontroller: purposeController,
                         onChanged: (value) {
-                          purposeController.text = value;
+                          setState(() {
+                            purpose = value;
+                          });
                         }),
                     inputFeild(
                         hinttxt: "Date & Time",
                         icon: Icons.date_range,
                         fieldcontroller: dateTimeController,
                         onChanged: (value) {
-                          dateTimeController.text = value;
+                          dateTime = value;
                         }),
                     inputFeild(
                         hinttxt: "Palce",
                         icon: Icons.location_city,
                         fieldcontroller: placeController,
                         onChanged: (value) {
-                          placeController.text = value;
+                          place = value;
                         }),
                     AppButton(
                         txt: "Add",

@@ -1,8 +1,6 @@
+import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/widgets.dart';
 import 'package:medrecords/authentication/authservices.dart';
-import 'package:medrecords/view/components/widgets.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class DatabaseServices {
   final String? uid;
@@ -17,6 +15,7 @@ class DatabaseServices {
       "fullName": fullName,
       "email": email,
       "uid": uid,
+      "medicalvisits": []
     });
   }
 
@@ -29,6 +28,7 @@ class DatabaseServices {
   Future<bool> createMedicalvisits(
       String doctorName, String purpose, String dateTime, String place) async {
     final userid = await HelperFunction.getUserId();
+    log("Creating Medical Visit");
     try {
       userCollection.doc(userid).collection('medicalvisits').add({
         "doctorName": doctorName,
@@ -37,15 +37,11 @@ class DatabaseServices {
         "place": place,
         "medicalvisitsId": doctorName + dateTime,
       });
+      log("Medical Visit Created");
       return true;
     } catch (e) {
+      print(e);
       return false;
     }
-  }
-
-  Future gettingMedicalvisits() async {
-    QuerySnapshot snapshot = await userCollection.doc().collection('medicalvisits').get();
-    print(snapshot);
-    return snapshot;
   }
 }

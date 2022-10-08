@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:medrecords/authentication/authservices.dart';
+import 'package:medrecords/authentication/welcome_page.dart';
 import 'package:medrecords/view/allergies.dart';
 import 'package:medrecords/view/components/med_scaffold.dart';
 import 'package:medrecords/view/medical_history.dart';
@@ -18,7 +20,9 @@ class Homepage extends StatelessWidget {
       backButton: false,
       fab: () {
         log("Logout Started");
-        AuthServices().signOut();
+        AuthServices().signOut().then((value) =>
+            Navigator.pushNamedAndRemoveUntil(
+                context, WelcomePage.route, (route) => false));
       },
       silverList: SliverList(
         delegate: SliverChildBuilderDelegate(

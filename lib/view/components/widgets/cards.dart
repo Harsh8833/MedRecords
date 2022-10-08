@@ -10,11 +10,11 @@ class PrimaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       color: AppColor.lightSeaBlue,
       child: SizedBox(
         width: size.width,
-        height: 120,
+        height: 130,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8.0),
           child: Row(
@@ -51,14 +51,34 @@ class PrimaryCard extends StatelessWidget {
 class MedicalVistiCard extends StatelessWidget {
   final String drName;
   final String dateTime;
+  final String place;
+  final String purpose;
   const MedicalVistiCard(
-      {super.key, required this.drName, required this.dateTime});
+      {super.key,
+      required this.drName,
+      required this.dateTime,
+      required this.place,
+      required this.purpose});
 
   @override
   Widget build(BuildContext context) {
     return PrimaryCard(title: drName, subtitles: <Widget>[
       Text(
+        purpose,
+        style: const TextStyle(
+            color: AppColor.darkGray,
+            fontSize: 17,
+            fontWeight: FontWeight.w600),
+      ),
+      Text(
         dateTime,
+        style: const TextStyle(
+            color: AppColor.darkGray,
+            fontSize: 17,
+            fontWeight: FontWeight.w600),
+      ),
+      Text(
+        place,
         style: const TextStyle(
             color: AppColor.darkGray,
             fontSize: 17,

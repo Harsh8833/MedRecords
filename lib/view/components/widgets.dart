@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:medrecords/config/const.dart';
 
 void showSnackBar(context, color, message) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -18,8 +16,8 @@ void showSnackBar(context, color, message) {
   ));
 }
 
-
-TextFormField inputFeild({hinttxt, icon, onChanged, fieldcontroller, obscuretext}) {
+TextFormField inputFeild(
+    {hinttxt, icon, onChanged, fieldcontroller, obscuretext = false}) {
   return TextFormField(
     style: const TextStyle(color: Colors.red),
     obscureText: obscuretext,

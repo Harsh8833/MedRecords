@@ -2,9 +2,11 @@ import 'dart:developer';
 
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:medrecords/config/const.dart';
 import 'package:medrecords/database/database_services.dart';
+import 'package:medrecords/main.dart';
 import 'package:medrecords/view/components/med_scaffold.dart';
 import 'package:medrecords/view/components/widgets.dart';
 import 'package:medrecords/view/components/widgets/cards.dart';
@@ -29,12 +31,9 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
   String dateTime = "";
   String purpose = "";
   String place = "";
-
+  String uid = prefs.getString('USERID') ?? "";
   @override
   void initState() {
-    var data = DatabaseServices().gettingMedicalvisits();
-    log("=========DATA=========");
-    print(data);
     // TODO: implement initState
     super.initState();
   }
@@ -54,20 +53,33 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
             return SizedBox(
                 height: size.height,
                 child: FutureBuilder(
-                  future: DatabaseServices().gettingMedicalvisits(),
+                  future: FirebaseFirestore.instance
+                      .collection("users")
+                      .doc(uid)
+                      .collection('medicalvisits')
+                      .get(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
+                      return const Center(child: CircularProgressIndicator());
                     } else if (snapshot.connectionState ==
                         ConnectionState.done) {
                       if (snapshot.hasError) {
                         return const Text('Error');
                       } else if (snapshot.hasData) {
-                        var data = snapshot.data;
-                        print(data..toString());
-                        return Text("",
-                            style: const TextStyle(
-                                color: Colors.cyan, fontSize: 36));
+                        var data = snapshot.data!.docs;
+                        print(data.length);
+                        return ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: data.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return MedicalVistiCard(
+                              drName: data[index]['doctorName'],
+                              dateTime: data[index]['dateTime'],
+                              purpose: data[index]['purpose'],
+                              place: data[index]['place'],
+                            );
+                          },
+                        );
                       } else {
                         return const Text('Empty data');
                       }
@@ -137,8 +149,21 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
                     }),
                 AppButton(
                     txt: "Add",
-                    onTap: () {
+                    onTap: () async {
                       log("Button Tapped");
+                      var dbServices = DatabaseServices();
+                      await dbServices
+                          .createMedicalvisits(
+                              doctorName, purpose, dateTime, place)
+                          .then((value) {
+                        if (value == true) {
+                          Navigator.pop(context);
+                          doctorNameController.text = "";
+                          dateTimeController.text = "";
+                          purposeController.text = "";
+                          placeController.text = "";
+                        }
+                      });
                     })
               ]),
             ),

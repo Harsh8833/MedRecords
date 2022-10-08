@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:medrecords/view/allergies.dart';
 import 'package:medrecords/view/components/med_scaffold.dart';
@@ -14,6 +16,10 @@ class Homepage extends StatelessWidget {
     return MedScaffold(
       title: "MedRecords",
       backButton: false,
+      fab: () {
+        log("Logout Started");
+        AuthServices().signOut();
+      },
       silverList: SliverList(
         delegate: SliverChildBuilderDelegate(
           (BuildContext context, int index) {

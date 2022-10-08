@@ -1,5 +1,3 @@
-import 'dart:developer';
-import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +96,8 @@ class _SignupPageState extends State<SignupPage> {
                       setState(() {
                         fullName = value;
                       });
-                    })),
+                    },
+                    obscuretext: false)),
             const SizedBox(
               height: 25,
             ),
@@ -112,7 +111,8 @@ class _SignupPageState extends State<SignupPage> {
                       setState(() {
                         email = value;
                       });
-                    })),
+                    },
+                    obscuretext: false)),
             const SizedBox(
               height: 25,
             ),
@@ -126,7 +126,8 @@ class _SignupPageState extends State<SignupPage> {
                       setState(() {
                         password = value;
                       });
-                    })),
+                    },
+                    obscuretext: true)),
             const SizedBox(
               height: 45,
             ),

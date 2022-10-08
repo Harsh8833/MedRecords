@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:medrecords/config/const.dart';
+import 'package:medrecords/database/database_services.dart';
 import 'package:medrecords/view/components/med_scaffold.dart';
 import 'package:medrecords/view/components/widgets.dart';
 import 'package:medrecords/view/components/widgets/cards.dart';
@@ -28,6 +31,15 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
   String place = "";
 
   @override
+  void initState() {
+    var data = DatabaseServices().gettingMedicalvisits();
+    log("=========DATA=========");
+    print(data);
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
@@ -41,13 +53,28 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
           (BuildContext context, int index) {
             return SizedBox(
                 height: size.height,
-                child: Column(
-                  children: [
-                    const MedicalVistiCard(
-                      drName: "Dr.SomeOne",
-                      dateTime: "10/12/2022 10:30 am",
-                    )
-                  ],
+                child: FutureBuilder(
+                  future: DatabaseServices().gettingMedicalvisits(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.done) {
+                      if (snapshot.hasError) {
+                        return const Text('Error');
+                      } else if (snapshot.hasData) {
+                        var data = snapshot.data;
+                        print(data..toString());
+                        return Text("",
+                            style: const TextStyle(
+                                color: Colors.cyan, fontSize: 36));
+                      } else {
+                        return const Text('Empty data');
+                      }
+                    } else {
+                      return Text('State: ${snapshot.connectionState}');
+                    }
+                  },
                 ));
           },
           childCount: 1,

@@ -1,10 +1,11 @@
+// ignore_for_file: unnecessary_import
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medrecords/authentication/login_page.dart';
 import 'package:medrecords/authentication/signup_page.dart';
-import 'package:medrecords/view/components/widgets.dart';
 
 import '../view/components/widgets/app_button.dart';
 

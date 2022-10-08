@@ -8,6 +8,7 @@ import 'package:medrecords/view/components/widgets.dart';
 import 'package:medrecords/view/homepage.dart';
 
 import '../database/database_services.dart';
+import '../view/components/widgets/app_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -88,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(
                 width: 300,
-                child: loginsignupfields(
+                child: inputFeild(
                     hinttxt: "Mail",
                     icon: CupertinoIcons.mail,
                     fieldcontroller: _emailController,
@@ -102,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(
                 width: 300,
-                child: loginsignupfields(
+                child: inputFeild(
                     hinttxt: "Password",
                     icon: CupertinoIcons.lock,
                     fieldcontroller: _passwordController,

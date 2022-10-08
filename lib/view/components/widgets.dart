@@ -1,30 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-class AppButton extends StatelessWidget {
-  String txt;
-  final onTap;
-  AppButton({super.key, required this.txt, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialButton(
-      onPressed: onTap,
-      color: Theme.of(context).primaryColor,
-      height: 50,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-      child: Text(
-        txt,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            fontSize: 16,
-            color: Colors.white,
-            fontWeight: FontWeight.w900,
-            fontFamily: GoogleFonts.poppins().fontFamily),
-      ),
-    );
-  }
-}
+import 'package:medrecords/config/const.dart';
 
 void showSnackBar(context, color, message) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -42,21 +18,21 @@ void showSnackBar(context, color, message) {
   ));
 }
 
-TextFormField loginsignupfields({hinttxt, icon, onChanged, fieldcontroller}) {
+TextFormField inputFeild({hinttxt, icon, onChanged, fieldcontroller}) {
   return TextFormField(
     onChanged: onChanged,
-    controller: fieldcontroller, 
+    controller: fieldcontroller,
     decoration: InputDecoration(
         prefixIcon: Icon(
           icon,
-          color: Colors.white,
+          color: AppColor.darkGray,
         ),
         hintText: hinttxt,
         hintStyle: const TextStyle(color: Colors.blueGrey),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(35),
             borderSide: BorderSide.none),
-        filled: true,
+        filled: false,
         fillColor: Colors.white54),
   );
 }

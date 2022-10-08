@@ -6,6 +6,8 @@ import 'package:medrecords/authentication/login_page.dart';
 import 'package:medrecords/authentication/signup_page.dart';
 import 'package:medrecords/view/components/widgets.dart';
 
+import '../view/components/widgets/app_button.dart';
+
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
   static const route = 'welcome_page';
@@ -45,9 +47,11 @@ class WelcomePage extends StatelessWidget {
             child: SizedBox(
                 width: 220,
                 child: AppButton(
-                    txt:  "Log In",onTap:  (){
-                      Navigator.pushNamed(context, LoginPage.route);
-                    }, )),
+                  txt: "Log In",
+                  onTap: () {
+                    Navigator.pushNamed(context, LoginPage.route);
+                  },
+                )),
           ),
           const SizedBox(
             height: 1,
@@ -62,8 +66,7 @@ class WelcomePage extends StatelessWidget {
               ),
               TextButton(
                   onPressed: (() {
-                    Navigator.pushNamed(context, SignupPage.route)
-                    ;
+                    Navigator.pushNamed(context, SignupPage.route);
                   }),
                   child: const Text(
                     "Sign Up Here",

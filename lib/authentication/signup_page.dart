@@ -8,6 +8,8 @@ import 'package:medrecords/authentication/login_page.dart';
 import 'package:medrecords/view/components/widgets.dart';
 import 'package:medrecords/view/homepage.dart';
 
+import '../view/components/widgets/app_button.dart';
+
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
   static const route = 'signup_page';
@@ -88,7 +90,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
             SizedBox(
                 width: 300,
-                child: loginsignupfields(
+                child: inputFeild(
                     hinttxt: "Name",
                     icon: CupertinoIcons.profile_circled,
                     fieldcontroller: _nameController,
@@ -102,7 +104,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
             SizedBox(
                 width: 300,
-                child: loginsignupfields(
+                child: inputFeild(
                     hinttxt: "Mail",
                     icon: CupertinoIcons.mail,
                     fieldcontroller: _emailController,
@@ -116,7 +118,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
             SizedBox(
                 width: 300,
-                child: loginsignupfields(
+                child: inputFeild(
                     hinttxt: "Password",
                     icon: CupertinoIcons.lock,
                     fieldcontroller: _passwordController,

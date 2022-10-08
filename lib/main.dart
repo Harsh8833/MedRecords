@@ -33,14 +33,14 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: WelcomePage.route,
+      initialRoute: Homepage.route,
       routes: {
         Homepage.route: (context) => const Homepage(),
         WelcomePage.route: ((context) => const WelcomePage()),
         LoginPage.route: (context) => const LoginPage(),
         SignupPage.route: (context) => const SignupPage(),
         MedicalHistoryPage.route: (context) => const MedicalHistoryPage(),
-        MedicalVisitPage.route: ((context) => const MedicalVisitPage()),
+        MedicalVisitPage.route: ((context) => MedicalVisitPage()),
         AllergiesPage.route: (context) => const AllergiesPage(),
         VaccinationPage.route: ((context) => const VaccinationPage())
       },

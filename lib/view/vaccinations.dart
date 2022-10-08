@@ -1,29 +1,77 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:medrecords/view/components/med_scaffold.dart';
 import 'package:medrecords/view/components/widgets/app_button.dart';
+import 'package:medrecords/view/components/widgets/cards.dart';
 
 import '../config/const.dart';
+import '../database/database_services.dart';
+import '../main.dart';
 import 'components/widgets.dart';
 
-class VaccinationPage extends StatelessWidget {
+class VaccinationPage extends StatefulWidget {
   const VaccinationPage({super.key});
   static const route = 'vacci';
 
   @override
+  State<VaccinationPage> createState() => _VaccinationPageState();
+}
+
+class _VaccinationPageState extends State<VaccinationPage> {
+  String uid = prefs.getString('USERID') ?? "";
+  @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return MedScaffold(
       title: "Vaccinations",
       fab: () {
         addVaccination(context);
       },
       silverList: SliverList(
-        delegate: SliverChildBuilderDelegate((context, index) {
-          return SizedBox(
-            height: 100,
-          );
-        }, childCount: 1),
+        delegate: SliverChildBuilderDelegate(
+          (BuildContext context, int index) {
+            return SizedBox(
+                height: size.height,
+                child: FutureBuilder(
+                  future: FirebaseFirestore.instance
+                      .collection("users")
+                      .doc(uid)
+                      .collection('vaccinations')
+                      .get(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.done) {
+                      if (snapshot.hasError) {
+                        return const Text('Error');
+                      } else if (snapshot.hasData) {
+                        var data = snapshot.data!.docs;
+                        print(data.length);
+                        return ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: data.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return VaccinationCard(
+                              vacciName: data[index]['vacciName'],
+                              vacciDate: data[index]['vacciDate'],
+                              vacciExp: data[index]['vacciExp'],
+                            );
+                          },
+                        );
+                      } else {
+                        return const Text('Empty data');
+                      }
+                    } else {
+                      return Text('State: ${snapshot.connectionState}');
+                    }
+                  },
+                ));
+          },
+          childCount: 1,
+        ),
       ),
     );
   }
@@ -78,8 +126,18 @@ class VaccinationPage extends StatelessWidget {
                     }),
                 AppButton(
                     txt: "Add",
-                    onTap: () {
+                    onTap: () async{
                       log("Button Tapped");
+                      var dbServices = DatabaseServices();
+                      await dbServices
+                          .createVaccinations(
+                              vacciName, vacciDate, vacciExp)
+                          .then((value) {
+                        Navigator.pop(context);
+                        vacciName = "";
+                        vacciDate = "";
+                        vacciExp = "";
+                      });
                     })
               ]),
             ),

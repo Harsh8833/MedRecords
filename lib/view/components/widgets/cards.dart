@@ -118,3 +118,34 @@ class AllergiesCard extends StatelessWidget {
     ]);
   }
 }
+
+class VaccinationCard extends StatelessWidget {
+  final String vacciName;
+  final String vacciDate;
+  final String vacciExp;
+  const VaccinationCard(
+      {super.key,
+      required this.vacciName,
+      required this.vacciDate,
+      required this.vacciExp});
+
+  @override
+  Widget build(BuildContext context) {
+    return PrimaryCard(title: vacciName, subtitles: <Widget>[
+      Text(
+        vacciDate,
+        style: const TextStyle(
+            color: AppColor.darkGray,
+            fontSize: 17,
+            fontWeight: FontWeight.w600),
+      ),
+      Text(
+        vacciExp,
+        style: const TextStyle(
+            color: AppColor.darkGray,
+            fontSize: 17,
+            fontWeight: FontWeight.w600),
+      ),
+    ]);
+  }
+}

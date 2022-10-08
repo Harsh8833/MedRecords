@@ -17,6 +17,7 @@ class DatabaseServices {
       "uid": uid,
       "medicalvisits": [],
       "allergies": [],
+      "vaccinations": []
     });
   }
 
@@ -58,6 +59,25 @@ class DatabaseServices {
         "allergiesId": allergyName + allergyDuration,
       });
       log("Medical Visit Created");
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  Future<bool> createVaccinations(
+      String vacciName, String vacciDate, String vacciExp) async {
+    final userid = await HelperFunction.getUserId();
+    log("Creating Vaccinations");
+    try {
+      userCollection.doc(userid).collection('vaccinations').add({
+        "vacciName": vacciName,
+        "vacciDate": vacciDate,
+        "vacciExp": vacciExp,
+        "allergiesId": vacciName + vacciDate,
+      });
+      log("Vaccinations Created");
       return true;
     } catch (e) {
       print(e);

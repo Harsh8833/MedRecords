@@ -29,6 +29,25 @@ class DatabaseServices {
     return snapshot;
   }
 
+  Future<bool> createMedicalHistory(
+      String patientName, String reason, String date) async {
+    final userid = await HelperFunction.getUserId();
+    log("Creating Medical History");
+    try {
+      userCollection.doc(userid).collection('medicalHistory').add({
+        "patientName": patientName,
+        "reason": reason,
+        "date": date,
+        "medicalId": patientName + reason,
+      });
+      log("Medical Visit Created");
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
   Future<bool> createMedicalvisits(
       String doctorName, String purpose, String dateTime, String place) async {
     final userid = await HelperFunction.getUserId();

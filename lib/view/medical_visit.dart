@@ -119,6 +119,7 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
                 inputFeild(
                     hinttxt: "Doctor Name",
                     icon: Icons.person,
+                    color: AppColor.darkGray,
                     fieldcontroller: doctorNameController,
                     onChanged: (value) {
                       setState(() {
@@ -128,6 +129,7 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
                 inputFeild(
                     hinttxt: "Purpose of visiting",
                     icon: Icons.all_inclusive,
+                    color: AppColor.darkGray,
                     fieldcontroller: purposeController,
                     onChanged: (value) {
                       setState(() {
@@ -137,6 +139,7 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
                 inputFeild(
                     hinttxt: "Date & Time",
                     icon: Icons.date_range,
+                    color: AppColor.darkGray,
                     fieldcontroller: dateTimeController,
                     onChanged: (value) {
                       dateTime = value;
@@ -144,6 +147,7 @@ class _MedicalVisitPageState extends State<MedicalVisitPage> {
                 inputFeild(
                     hinttxt: "Place",
                     icon: Icons.location_city,
+                    color: AppColor.darkGray,
                     fieldcontroller: placeController,
                     onChanged: (value) {
                       place = value;

@@ -109,6 +109,7 @@ class _AllergiesPageState extends State<AllergiesPage> {
                     hinttxt: "Name of Allergy",
                     icon: Icons.coronavirus,
                     fieldcontroller: allergyNameController,
+                    color: AppColor.darkGray,
                     onChanged: (value) {
                       allergyName = value;
                     }),
@@ -116,12 +117,14 @@ class _AllergiesPageState extends State<AllergiesPage> {
                     hinttxt: "Duration of Allergy",
                     icon: Icons.lock_clock,
                     fieldcontroller: allergyDurationController,
+                    color: AppColor.darkGray,
                     onChanged: (value) {
                       allergyDuration = value;
                     }),
                 inputFeild(
                     hinttxt: "Precautions",
                     icon: Icons.health_and_safety,
+                    color: AppColor.darkGray,
                     fieldcontroller: precautionsController,
                     onChanged: (value) {
                       precautions = value;

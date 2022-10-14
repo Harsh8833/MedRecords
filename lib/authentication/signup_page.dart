@@ -25,6 +25,7 @@ class _SignupPageState extends State<SignupPage> {
   AuthServices authService = AuthServices();
 
   Future signUp() async {
+    showLoading(context);
     await authService
         .registerUserWithEmailandPassword(fullName, email, password)
         .then((value) async {
@@ -41,6 +42,29 @@ class _SignupPageState extends State<SignupPage> {
         showSnackBar(context, Colors.red, value);
       }
     });
+  }
+
+  showLoading(context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            child: Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Row(
+                children: [
+                  CircularProgressIndicator(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  const Text("Please wait")
+                ],
+              ),
+            ),
+          );
+        });
   }
 
   @override
@@ -133,7 +157,7 @@ class _SignupPageState extends State<SignupPage> {
             SizedBox(
                 width: 220,
                 child: AppButton(
-                    txt: "S I G N U P",
+                    txt: "Sign up",
                     onTap: () {
                       signUp();
                     })),

@@ -17,9 +17,14 @@ void showSnackBar(context, color, message) {
 }
 
 TextFormField inputFeild(
-    {hinttxt, icon, onChanged, fieldcontroller, obscuretext = false}) {
+    {hinttxt,
+    icon,
+    onChanged,
+    fieldcontroller,
+    obscuretext = false,
+    color = Colors.white}) {
   return TextFormField(
-    style: const TextStyle(color: Colors.red),
+    style: TextStyle(color: color),
     obscureText: obscuretext,
     onChanged: onChanged,
     controller: fieldcontroller,

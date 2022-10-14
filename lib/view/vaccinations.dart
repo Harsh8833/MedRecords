@@ -108,6 +108,7 @@ class _VaccinationPageState extends State<VaccinationPage> {
                 inputFeild(
                     hinttxt: "Name of Vaccination",
                     icon: Icons.vaccines,
+                    color: AppColor.darkGray,
                     fieldcontroller: vacciNameController,
                     onChanged: (value) {
                       vacciName = value;
@@ -115,6 +116,7 @@ class _VaccinationPageState extends State<VaccinationPage> {
                 inputFeild(
                     hinttxt: "Date of Vaccination",
                     icon: Icons.date_range,
+                    color: AppColor.darkGray,
                     fieldcontroller: vacciDateController,
                     onChanged: (value) {
                       vacciDate = value;
@@ -122,6 +124,7 @@ class _VaccinationPageState extends State<VaccinationPage> {
                 inputFeild(
                     hinttxt: "Vaccination Validity",
                     icon: Icons.access_time,
+                    color: AppColor.darkGray,
                     fieldcontroller: vacciExpController,
                     onChanged: (value) {
                       vacciExp = value;

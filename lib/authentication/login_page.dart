@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:medrecords/authentication/authservices.dart';
 import 'package:medrecords/authentication/signup_page.dart';
+import 'package:medrecords/config/const.dart';
 import 'package:medrecords/view/components/widgets.dart';
 import 'package:medrecords/view/homepage.dart';
 
@@ -26,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
   String password = "";
 
   Future logIn() async {
+    showLoading(context);
     await authService
         .signInWithEmailandPassword(email, password)
         .then((value) async {
@@ -41,8 +43,34 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => const Homepage()),
             (route) => false);
+      } else {
+        Navigator.pop(context);
+        showSnackBar(context, Colors.red, value);
       }
     });
+  }
+
+  showLoading(context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            child: Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Row(
+                children: [
+                  CircularProgressIndicator(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  const Text("Please wait")
+                ],
+              ),
+            ),
+          );
+        });
   }
 
   @override
@@ -120,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
                 width: 220,
                 child: AppButton(
-                    txt: "L O G I N",
+                    txt: "Login",
                     onTap: () {
                       logIn();
                     })),
